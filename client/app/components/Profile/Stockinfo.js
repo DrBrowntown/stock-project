@@ -15,14 +15,14 @@ const StockInfo = (props) => {
     const timeSeries = data['Time Series (Daily)'];
 
     // key is date
-    for (var key in timeSeries.options) {
-        if (timeSeries.options.hasOwnPropery(key)) {
-            const finData = timeSeries.options[key];           
-            const open = finData['1. open'];
-            const high = finData['2. high'];
-            const low = finData['3. low'];
-            const close = finData['4. close'];
-            const volume = finData['5. volume'];
+    for (var key in timeSeries) {
+        if (timeSeries[key]) {
+            const finData = timeSeries[key];           
+            const open = parseFloat(finData['1. open']);
+            const high = parseFloat(finData['2. high']);
+            const low = parseFloat(finData['3. low']);
+            const close = parseFloat(finData['4. close']);
+            const volume = parseFloat(finData['5. volume']);
 
             rows.push({
                 date: key,
@@ -50,10 +50,10 @@ const StockInfo = (props) => {
                     <CartesianGrid strokeDasharray="3 3"/>
                     <Tooltip/>
                     <Legend />
-                    <Line type="monotone" dataKey="open" stroke="#8884d8" activeDot={{r: 8}}/>
-                    <Line type="monotone" dataKey="high" stroke="#82ca9d" />
-                    <Line type="monotone" dataKey="low" stroke="#B4045F" />
-                    <Line type="monotone" dataKey="close" stroke="#868A08" />
+                    <Line type="monotone" dataKey="open" stroke="#8884d8" dot={false} />
+                    <Line type="monotone" dataKey="high" stroke="#82ca9d" dot={false} />
+                    <Line type="monotone" dataKey="low" stroke="#B4045F" dot={false} />
+                    <Line type="monotone" dataKey="close" stroke="#868A08" dot={false} />
                     
                 </LineChart>
         </div>
