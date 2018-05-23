@@ -65,7 +65,7 @@ class Home extends Component {
 
         return (
             <div>
-                <h1>Portfolio</h1>
+                <h1><a href="/profile">Portfolio</a></h1>
                 {
                     results.map(result => <StockInfoBasic data={result} />)
                 }

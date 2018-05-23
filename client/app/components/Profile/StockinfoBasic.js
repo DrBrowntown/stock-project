@@ -1,8 +1,6 @@
 import React from 'react';
 
 
-    
-
 const StockInfoBasic = (props) => {
     const {
         data,
@@ -18,9 +16,9 @@ const StockInfoBasic = (props) => {
 
     return (
         <div>
-            <p>{ticker}</p>
-            <p>{lastRefreshed}</p>
-            <p>${closingPrice}</p>
+            <p>Symbol: <a href={ticker}>{ticker}</a></p>
+            <p>Last Refreshed: {lastRefreshed}</p>
+            <p>Closing Price ${closingPrice}</p>
             <br />
 
         </div>
