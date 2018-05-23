@@ -1,8 +1,6 @@
 import React from 'react';
 
 
-const today = new Date().format('MM/DD/YYY');
-
     
 
 const StockInfoBasic = (props) => {
@@ -12,8 +10,8 @@ const StockInfoBasic = (props) => {
     
     const ticker = data['Meta Data']['2. Symbol'];
     const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
-    const timezone = data['Meta Data']['Time Series (Daily)'];
-    console.log(today);
+    const closingPrice = data['Time Series (Daily)'][lastRefreshed]['4. close'];
+    
     
 
  
@@ -22,7 +20,7 @@ const StockInfoBasic = (props) => {
         <div>
             <p>{ticker}</p>
             <p>{lastRefreshed}</p>
-            <p>{timezone}</p>
+            <p>${closingPrice}</p>
             <br />
 
         </div>
