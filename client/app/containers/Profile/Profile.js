@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import StockInfo from '../../components/Profile/StockInfo'
+
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -9,10 +11,17 @@ class Profile extends Component {
             error: null,
             results: [],
         };
+
+        this.fetchProfileStockInfo = this.fetchProfileStockInfo.bind(this);
+    }
+
+    componentWillMount() {
+        this.fetchProfileStockInfo();
     }
 
     fetchProfileStockInfo() {
-        fetch('/api/stock/profile', { method: 'POST' })
+        console.log('fetchProfileStockInfo');
+        fetch('/api/stock/portfolio', { method: 'POST' })
             .then(res => res.json())
             .then(json => {
                 if (json.success) {
@@ -34,22 +43,25 @@ class Profile extends Component {
         const {
             error,
             isLoading,
-            results,
+            results
         } = this.state;
 
         if (isLoading) {
             return (
                 <div>
                     <p>Load in progress...</p>
-                <div>
+                </div>
             );
+        }
+
         if (error) {
             return (
                 <div style={{ backgroundColor: '#610B21'}}>
                     <p style={{ color: '#fff'}}>{error}</p>
-                <div>
+                </div>
             );
         }
+
         return (
             <div>
                 <p>Profile</p>
