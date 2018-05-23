@@ -65,7 +65,7 @@ class Home extends Component {
 
         return (
             <div>
-                <p>Profile</p>
+                <h1>Portfolio</h1>
                 {
                     results.map(result => <StockInfoBasic data={result} />)
                 }
