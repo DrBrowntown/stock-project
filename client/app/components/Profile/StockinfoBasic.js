@@ -18,7 +18,7 @@ const StockInfoBasic = (props) => {
 
     return (
         <div>
-            <p>Symbol: <a href="{ticker}">{ticker}</a></p>
+            <p>Symbol: <a href={ticker}>{ticker}</a></p>
             <p>Last Refreshed: {lastRefreshed}</p>
             <p>Closing Price: ${closingPrice}</p>
             <br />
