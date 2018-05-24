@@ -6,48 +6,49 @@ import {
 const StockInfo = (props) => {
     const stockURL = window.location.pathname;
     const upperCaseURL = stockURL.toUpperCase().replace('/', '');
-
-
-            console.log(upperCaseURL)    
-
-    const {
-        data,
-    } = props;
-    const ticker = data['Meta Data']['2. Symbol'];
-    const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
-    const timezone = data['Meta Data']['5. Time Zone'];
-
+    const ticker = [];
+    const lastRefreshed = [];
+    const timezone = [];
     const rows = [];
-    const timeSeries = data['Time Series (Daily)'];
+    const timeSeries = [];
+    // console.log(upperCaseURL)    
 
-    
-    console.log('true');
-    
-    // key is date
-    for (var key in timeSeries) {
-        if (timeSeries[key]) {
-            const finData = timeSeries[key];           
-            const open = parseFloat(finData['1. open']);
-            const high = parseFloat(finData['2. high']);
-            const low = parseFloat(finData['3. low']);
-            const close = parseFloat(finData['4. close']);
-            const volume = parseFloat(finData['5. volume']);
 
-            rows.push({
-                date: key,
-                open,
-                high,
-                low,
-                close,
-            });
+    if (props['data']['Meta Data']['2. Symbol'] === upperCaseURL) {
+        const {
+            data,
+        } = props;
+        // console.log(data['Time Series (Daily)'])
+        const ticker = data['Meta Data']['2. Symbol'];
+        console.log(ticker);
+        const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+        const timezone = data['Meta Data']['5. Time Zone'];
+        // const rows = [];
+        const timeSeries = data['Time Series (Daily)']; 
+        for (var key in timeSeries) {
+            if (timeSeries[key]) {
+                const finData = timeSeries[key];           
+                const open = parseFloat(finData['1. open']);
+                const high = parseFloat(finData['2. high']);
+                const low = parseFloat(finData['3. low']);
+                const close = parseFloat(finData['4. close']);
+                const volume = parseFloat(finData['5. volume']);
+
+                rows.push({
+                    date: key,
+                    open,
+                    high,
+                    low,
+                    close,
+                });
+                
+            }
         }
+
     }
-
-
-
     return (
         <div>
-            <p>{ticker}</p>
+            <p>Symbol: {ticker}</p>
             <p>{lastRefreshed}</p>
             <p>{timezone}</p>
             <br />
@@ -68,5 +69,7 @@ const StockInfo = (props) => {
         </div>
     )
 };
+        
+  
 
 export default StockInfo;

@@ -1,5 +1,6 @@
 const request = require('superagent');
 
+
 module.exports = (app) => {
     app.post('/api/stock/portfolio', function (req, res, next) {
         const apiKey = 'WO3CN6DU2D02X0QH';
