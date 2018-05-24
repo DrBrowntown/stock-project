@@ -10,21 +10,19 @@ const StockInfo = (props) => {
     const lastRefreshed = [];
     const timezone = [];
     const rows = [];
-    const timeSeries = [];
-    // console.log(upperCaseURL)    
-
+  
+    // console.log(upperCaseURL)
 
     if (props['data']['Meta Data']['2. Symbol'] === upperCaseURL) {
-        const {
-            data,
-        } = props;
+ 
         // console.log(data['Time Series (Daily)'])
-        const ticker = data['Meta Data']['2. Symbol'];
+        const ticker = props['data']['Meta Data']['2. Symbol'];
         console.log(ticker);
-        const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
-        const timezone = data['Meta Data']['5. Time Zone'];
+        const lastRefreshed = props['data']['Meta Data']['3. Last Refreshed'];
+        const timezone = props['data']['Meta Data']['5. Time Zone'];
         // const rows = [];
-        const timeSeries = data['Time Series (Daily)']; 
+        const timeSeries = props['data']['Time Series (Daily)'];
+         
         for (var key in timeSeries) {
             if (timeSeries[key]) {
                 const finData = timeSeries[key];           
@@ -40,17 +38,15 @@ const StockInfo = (props) => {
                     high,
                     low,
                     close,
-                });
-                
+                });                
             }
         }
-
     }
     return (
         <div>
             <p>Symbol: {ticker}</p>
-            <p>{lastRefreshed}</p>
-            <p>{timezone}</p>
+            <p>Last Refreshed: {lastRefreshed}</p>
+            <p>Timezone: {timezone}</p>
             <br />
 
                 <LineChart width={600} height={300} data={rows}
