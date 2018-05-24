@@ -7,7 +7,7 @@ class Profile extends Component {
         super(props);
 
         this.state = {
-            isLoading: true,
+            
             error: null,
             results: [],
         };
@@ -73,7 +73,7 @@ class Profile extends Component {
             </div>
 
         );
-        
+
     }
 
 }
