@@ -21,6 +21,7 @@ class Home extends Component {
     }
 
     fetchProfileStockInfo() {
+        
         console.log('fetchProfileStockInfo');
         fetch('/api/stock/portfolio', { method: 'POST' })
             .then(res => res.json())

@@ -17,12 +17,14 @@ import Profile from './containers/Profile/Profile';
 
 import './styles/styles.scss';
 
+
+
 render((
   <Router>
     <App>
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route path="/profile" component={Profile}/>
+        <Route path="/*" component={Profile}/>
         <Route component={NotFound}/>
       </Switch>
     </App>

@@ -4,6 +4,12 @@ import {
 } from 'recharts'
 
 const StockInfo = (props) => {
+    const stockURL = window.location.pathname;
+    const upperCaseURL = stockURL.toUpperCase().replace('/', '');
+
+
+            console.log(upperCaseURL)    
+
     const {
         data,
     } = props;
@@ -14,6 +20,9 @@ const StockInfo = (props) => {
     const rows = [];
     const timeSeries = data['Time Series (Daily)'];
 
+    
+    console.log('true');
+    
     // key is date
     for (var key in timeSeries) {
         if (timeSeries[key]) {
@@ -34,7 +43,7 @@ const StockInfo = (props) => {
         }
     }
 
-    console.log('rows', rows);
+
 
     return (
         <div>

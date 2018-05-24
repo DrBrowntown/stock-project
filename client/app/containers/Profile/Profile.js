@@ -20,7 +20,8 @@ class Profile extends Component {
     }
 
     fetchProfileStockInfo() {
-        console.log('fetchProfileStockInfo');
+        
+
         fetch('/api/stock/portfolio', { method: 'POST' })
             .then(res => res.json())
             .then(json => {
@@ -40,6 +41,7 @@ class Profile extends Component {
     }
 
     render() {
+
         const {
             error,
             isLoading,
@@ -64,13 +66,16 @@ class Profile extends Component {
 
         return (
             <div>
-                <p>Profile</p>
+                <h1>Stock Details</h1>
                 {
                     results.map(result => <StockInfo data={result} />)
                 }
             </div>
+
         );
+        
     }
+
 }
 
 export default Profile;
