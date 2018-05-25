@@ -8,12 +8,12 @@ import {
   Switch
 } from 'react-router-dom'
 
-import App from './containers/App/App';
-import NotFound from './containers/App/NotFound';
+import App from './containers/App/App.js';
+import NotFound from './containers/App/NotFound.js';
 
-import Home from './containers/Home/Home';
+import Home from './containers/Home/Home.js';
 
-import Profile from './containers/Profile/Profile';
+import Profile from './containers/Profile/Profile.js';
 
 import './styles/styles.scss';
 
