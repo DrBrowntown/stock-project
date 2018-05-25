@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
-import StockInfoBasic from '../../components/Profile/StockInfoBasic'
+import StockInfoBasic from '../../components/Profile/StockInfoBasic.js'
 
 class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            
+            isLoading: true,
             error: null,
             results: [],
         };

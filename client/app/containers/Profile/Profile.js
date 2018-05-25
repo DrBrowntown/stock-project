@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import StockInfo from '../../components/Profile/StockInfo'
+import StockInfo from '../../components/Profile/StockInfo.js'
 
 class Profile extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            
+            isLoading: true,
             error: null,
             results: [],
         };
