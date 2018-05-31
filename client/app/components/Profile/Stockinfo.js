@@ -18,7 +18,7 @@ const StockInfo = (props) => {
         const {
             data,
         } = props;
-        // console.log(data['Time Series (Daily)'])
+        console.log(data['Time Series (Daily)'])
         const ticker = data['Meta Data']['2. Symbol'];
         
         const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
