@@ -9,59 +9,51 @@ const StockInfo = (props) => {
     let ticker;
     const lastRefreshed = [];
     const timezone = [];
-    const rows = [];
+    let rows =[];
     const timeSeries = [];
     // console.log(upperCaseURL)    
 
-    function returnSingleStockData() {
-        if (props['data']['Meta Data']['2. Symbol'] === upperCaseURL) {
-            const {
-                data,
-            } = props;
-            // console.log(data['Time Series (Daily)'])
-            const ticker = data['Meta Data']['2. Symbol'];
-            
-            const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
-            const timezone = data['Meta Data']['5. Time Zone'];
-            // const rows = [];
-            const timeSeries = data['Time Series (Daily)'];
-             
-            for (var key in timeSeries) {
-                if (timeSeries[key]) {
-                    const finData = timeSeries[key];           
-                    const open = parseFloat(finData['1. open']);
-                    const high = parseFloat(finData['2. high']);
-                    const low = parseFloat(finData['3. low']);
-                    const close = parseFloat(finData['4. close']);
-                    const volume = parseFloat(finData['5. volume']);
-
-                    rows.push({
-                        date: key,
-                        open,
-                        high,
-                        low,
-                        close,
-                    });          
-                }
-
-            }
-
-        }
-        return ticker;
-        
-        
-    }
-
-    returnSingleStockData();
-    console.log(ticker)
     
+    if (props['data']['Meta Data']['2. Symbol'] === upperCaseURL) {
+        const {
+            data,
+        } = props;
+        // console.log(data['Time Series (Daily)'])
+        const ticker = data['Meta Data']['2. Symbol'];
+        
+        const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+        const timezone = data['Meta Data']['5. Time Zone'];
+        // const rows = [];
+        const timeSeries = data['Time Series (Daily)'];
+        console.log(timeSeries);
+
+        for (var key in timeSeries) {
+            if (timeSeries[key]) {
+                const finData = timeSeries[key];           
+                const open = parseFloat(finData['1. open']);
+                const high = parseFloat(finData['2. high']);
+                const low = parseFloat(finData['3. low']);
+                const close = parseFloat(finData['4. close']);
+                const volume = parseFloat(finData['5. volume']);
+
+                rows.push({
+                    date: key,
+                    open,
+                    high,
+                    low,
+                    close,
+                });
+                return [ticker, lastRefreshed, timezone];          
+            }
+        }      
+    } 
     return (
         <div>
             <p>{ticker}</p>
             <p>{lastRefreshed}</p>
             <p>{timezone}</p>
             <br />
-
+ 
                 <LineChart width={600} height={300} data={rows}
                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                     <XAxis dataKey="date"/>
@@ -74,11 +66,9 @@ const StockInfo = (props) => {
                     <Line type="monotone" dataKey="low" stroke="#B4045F" dot={false} />
                     <Line type="monotone" dataKey="close" stroke="#868A08" dot={false} />
                     
-                </LineChart>
+                </LineChart> 
         </div>
     )
 };
         
-  
-
 export default StockInfo;
