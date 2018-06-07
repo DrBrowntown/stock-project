@@ -31,3 +31,7 @@ Development (Webpack dev server) mode:
 ```shell
 npm run start:dev
 ```
+
+## Details
+
+This project will provide a dashboard of the stocks contained within a profile. 
